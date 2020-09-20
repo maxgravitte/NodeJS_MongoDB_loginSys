@@ -33,12 +33,7 @@ initializePassport(
 		}
 	})
 	},
-  //look up id in db, return array of matching results
-	function(id){
-		db.account.find({id:id},function(err,docs){
-			return docs;
-		})
-	}
+  
 )
 
 const users = []

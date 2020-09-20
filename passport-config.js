@@ -12,13 +12,23 @@ function initialize(passport, getUserByEmail, getUserById) {
 		else{
 			user = result;
 			console.log("email found;) " + result.email)
-			
+			console.log(user.password)
 			try {
+				bcrypt.compare(password, user.password).then(function(result){
+					if(result){
+						return done(null,user)
+					}
+					else{
+						return done(null,false, {message:'wrong password'})
+					}
+				})
+				
+				/*
 			  if (bcrypt.compare(password, user.password)) {
 				return done(null, user)
 			  } else {
 				return done(null, false, { message: 'Password incorrect' })
-			  }
+			  }*/
 			} catch (e) {
 			  return done(e)
 			}
